@@ -1,19 +1,33 @@
 package com.example.minorproject.dto;
 
-public class AccountRequestDTO {
+import com.example.minorproject.entity.Account;
+
+public class AccountResponseDTO {
+    private Long accountId;
     private String name;
     private String email;
     private Integer bill;
 
-
-    public AccountRequestDTO(String name, String email, Integer bill) {
+    public AccountResponseDTO(Long accountId, String name, String email, Integer bill) {
+        this.accountId = accountId;
         this.name = name;
         this.email = email;
         this.bill = bill;
     }
 
-    public AccountRequestDTO() {
+    public AccountResponseDTO(Account account){
+        accountId = account.getId();
+        name = account.getName();
+        email = account.getEmail();
+        bill = account.getBill();
+    }
 
+    public Long getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
 
     public String getName() {

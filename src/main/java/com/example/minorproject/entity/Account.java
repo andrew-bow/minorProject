@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.StringJoiner;
 
 @Entity
 public class Account {
@@ -13,11 +14,18 @@ public class Account {
     private Long id;
 
     private String name;
+
     private String email;
+
     private Integer bill;
 
-    public Account(){
+    public Account() {
+    }
 
+    public Account(String name, String email, Integer bill) {
+        this.name = name;
+        this.email = email;
+        this.bill = bill;
     }
 
     public Long getId() {
@@ -52,22 +60,13 @@ public class Account {
         this.bill = bill;
     }
 
-    public Account(Long id, String name, String email, Integer bill) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.bill = bill;
-
-
-    }
-
     @Override
     public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", bill=" + bill +
-                '}';
+        return new StringJoiner(", ", Account.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("name='" + name + "'")
+                .add("email='" + email + "'")
+                .add("bill=" + bill)
+                .toString();
     }
 }
